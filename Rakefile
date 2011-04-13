@@ -2,6 +2,8 @@
 
 require 'rubygems'
 require 'hoe'
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
 Hoe.plugin :git
 
