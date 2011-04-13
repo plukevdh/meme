@@ -1,10 +1,7 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "meme/version"
-
 Gem::Specification.new do |s|
   s.name        = "meme"
-  s.version     = Meme::VERSION
+  s.version     = "1.10.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Eric Hodel"]
   s.email       = ["drbrain@segment7.net"]

@@ -1,7 +1,6 @@
 require 'net/http'
-require 'rubygems'
-require 'nokogiri'
 require 'cgi'
+require 'nokogiri'
 
 ##
 # Generate memes using http://memegenerator.net
