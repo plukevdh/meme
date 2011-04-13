@@ -113,7 +113,7 @@ class Meme
 
   # keep generators in alphabetical order
 
-  ##
+  ## =>
   # Looks up generator name
 
   def GENERATORS.match(name)
@@ -128,7 +128,7 @@ class Meme
   # Interface for the executable
 
   def self.run argv = ARGV
-    generator = ARGV.shift
+    generator = argv.shift
 
     if generator == '--list' then
       width = GENERATORS.keys.map { |command| command.length }.max
@@ -141,7 +141,7 @@ class Meme
     end
 
     text_only = if generator == '--text'
-      generator = ARGV.shift
+      generator = argv.shift
       true
     else
       false
@@ -149,10 +149,10 @@ class Meme
 
     # puts "text_only:#{text_only} generator:#{generator}"
 
-    abort "#{$0} [GENERATOR|--list] LINE [ADDITONAL_LINES]" if ARGV.empty?
+    abort "#{$0} [GENERATOR|--list] LINE [ADDITONAL_LINES]" if argv.empty?
 
     meme = new generator
-    link = meme.generate(*ARGV)
+    link = meme.generate(*argv)
 
     meme.paste(link) unless text_only
 
