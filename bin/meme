@@ -2,5 +2,5 @@
 
 require 'meme'
 
-Meme.run ARGV
+puts Meme.run ARGV
 

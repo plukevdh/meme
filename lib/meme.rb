@@ -132,11 +132,12 @@ class Meme
     if generator == '--list' then
       width = GENERATORS.keys.map { |command| command.length }.max
 
+      list = []
       GENERATORS.sort.each do |command, (id, name, _)|
-        puts "%-*s  %s" % [width, command, name]
+        list << "%-*s  %s" % [width, command, name]
       end
-
-      exit
+    
+      return list.join("\n")
     end
 
     text_only = if generator == '--text'
@@ -148,7 +149,7 @@ class Meme
 
     # puts "text_only:#{text_only} generator:#{generator}"
 
-    abort "#{$0} [GENERATOR|--list] LINE [ADDITONAL_LINES]" if argv.empty?
+    return "#{$0} [GENERATOR|--list] LINE [ADDITONAL_LINES]" if argv.empty?
 
     meme = new generator
     link = meme.generate(*argv)
@@ -156,9 +157,9 @@ class Meme
     meme.paste(link) unless text_only
 
     if $stdout.tty? || text_only
-      puts link
+      return link
     else
-      puts meme.fetch link
+      return meme.fetch link
     end
     link
   rescue Interrupt
@@ -166,8 +167,7 @@ class Meme
   rescue SystemExit
     raise
   rescue Exception => e
-    puts e.backtrace.join "\n\t" if $DEBUG
-    abort "ERROR: #{e.message} (#{e.class})"
+    return e.backtrace.join "\n\t" if $DEBUG
   end
 
   ##
