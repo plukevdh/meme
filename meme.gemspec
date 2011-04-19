@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = "meme"
-  s.version     = "1.10.1"
+  s.version     = "1.10.2"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Eric Hodel"]
   s.email       = ["drbrain@segment7.net"]
